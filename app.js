@@ -13,7 +13,7 @@ const checkNameInput = (input) => {
 const checkEmailInput = (input) => {
     const emailValueForCheck = input.value;
     if (emailValueForCheck.length === 0) throw new Error(`Your email field is empty`);
-    const checkingProcess = /\w+@\w+.\w+/.test(emailValueForCheck)
+    const checkingProcess = /\w+@\w+\.\w+/.test(emailValueForCheck)
     if (checkingProcess !== true) throw new Error(`Your email isn't correct`);
     else return emailValueForCheck;
 }
