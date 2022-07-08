@@ -1,0 +1,65 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.dropdown-section {
+    margin: auto;
+    margin-top: 20px;
+    width: 400px;
+}
+
+.dropdown-title {
+    font: 500 16px 'Montserrat';
+}
+
+.button {
+    display: flex;
+    position: relative;
+    width: 260px;
+    height: 20px;
+    margin-top: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px 10px;
+    cursor: pointer;
+}
+
+.btn-name {
+    font: 400 16px 'Montserrat';
+    color: #666666;
+}
+
+.btn-arrow {
+    background-image: url(./image/Chevron.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 10px;
+    height: 5px;
+    left: 245px;
+    top: 26px;
+
+}
+
+.dropdown-menu {
+    display: none;
+    margin-top: 10px;
+    width: 280px;
+    height: 205px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+li{
+    padding: 15px;
+    list-style-type: none;
+    font: 400 16px 'Montserrat';
+    cursor: pointer;
+}
+
+hr {
+    opacity: 10%;
+}
