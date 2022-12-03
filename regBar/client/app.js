@@ -4,7 +4,7 @@ const checkNameInput = (input) => {
     const nameValueForCheck = input.value;
     if (nameValueForCheck.length === 0) throw new Error(`Your name field is empty`);
     for (let i = 0; i < nameValueForCheck.length; i++) {
-        if (!isNaN(nameValueForCheck.split(``)[i])) throw new Error(`Your name cannot contain numbers`);
+        if (!isNaN(nameValueForCheck.trim().split(``)[i])) throw new Error(`Your name cannot contain numbers`);
         continue
     }
     return nameValueForCheck
@@ -34,13 +34,44 @@ const matchingPass = (input1, input2) => {
     else return passValueForCheckFirst, passValueForCheckSecond;
 }
 
-btn.addEventListener(`click`, () => {
+btn.addEventListener(`click`, async () => {
     try {
         const name = document.querySelector(`.name-input`);
         const email = document.querySelector(`.email-input`);
         const pass = document.querySelector(`.pass-input`);
         const repeatPass = document.querySelector(`.repeatpass-input`);
-        if (checkNameInput(name) && checkEmailInput(email) && checkPassInput(pass) && matchingPass(pass, repeatPass)) alert(`Your registration has been successfully completed!`);
+        if (checkNameInput(name) && checkEmailInput(email) && checkPassInput(pass) && matchingPass(pass, repeatPass)) {
+            // const method = 'POST'
+            // const ob = JSON.stringify({
+            //     name: name.value,
+            //     email: email.value,
+            //     password: pass.value
+            // })
+            // const res = await fetch('http://localhost:2881/api/register', {
+            //     method: method,
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     },
+            //     body: ob
+            // })
+            // const resJson = await res.json();
+
+
+            const response = await fetch(`http://localhost:2881/api`, {
+                method: `GET`,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            const all = document.querySelector(`.all`);
+            const allUsers = await response.json();
+
+            for (key in allUsers) {
+                let arr = Object.entries(allUsers[key]);
+                console.log(arr);
+                all.innerHTML += `${arr[0][0] + `:`+ arr[0][1]}, ${arr[1][0] + `:` + arr[1][1]}  | `;
+            }
+        }
     } catch (e) {
         return alert(e.message);
     }
